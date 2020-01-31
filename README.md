@@ -61,7 +61,7 @@ automata - 随机托管运行管理系统
 ```c++
 int insertData_Parkinglot(int time, int parkSerial, bool isVIP, char* carserial, double cost);
 //time			停车时间
-//parkSerial	停车位
+//parkSerial		停车位
 //isVIP			是否VIP
 //carserial		车牌号
 //cost			应缴金额
