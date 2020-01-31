@@ -2,17 +2,18 @@
 #ifndef FUNCTION
 #define FUNCTION
 
-class Func
-{
+class Func {
 public:
-	int Config();
-	int Earn();
-	int Help();
-	int Jump();
-	int Leave();
+	int Config();	//1
+	int Earn();		//3
+	int Help();		//4
+	int Jump();		//5
+	int Leave();	//6
+	int Load();	
 	int Login();
-	int Map();
-	int Park();
+	int Map();		//7
+	int Park();		//8
+	int Save();		//9
 	int Statues();
 };
 

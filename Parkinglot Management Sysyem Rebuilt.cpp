@@ -1,7 +1,7 @@
-﻿#include <iostream>
-#include "Function.h"
+﻿#include "included.h"
 
 using namespace std;
+using namespace tinyxml2;
 
 int main(int argc, char* argv[]) {
 	char Temp = '\0';

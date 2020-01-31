@@ -5,11 +5,7 @@
 #define defaultParkingSpace 1
 
 //引用
-#include "Function.h"
-#include <iostream>
-
-//命名空间
-using namespace std;
+#include "included.h"
 
 //全局变量
 int runningHour = 0;
@@ -17,10 +13,12 @@ int sidewayPointer = 0;
 int spacePointer = 0;
 int totalSpace = defaultParkingSpace;
 int VIPCounter = 0;
-float costPerHour = 1.5;
-float totalEarn = 0.0;
-float VIPDiscount = 0.8;
+double costPerHour = 1.5;
+double totalEarn = 0.0;
+double VIPDiscount = 0.8;
 
+using namespace std;
+using namespace tinyxml2;
 
 //结构体
 struct parking_space {
@@ -28,7 +26,7 @@ struct parking_space {
 	int parkSerial;
 	bool isVIP;
 	char carSerial[6];
-	float cost;
+	double cost;
 } parkingSpace;
 
 struct parking_lot {
@@ -113,25 +111,24 @@ int Func::Earn() {
 int Func::Help() {
 	cout << endl;
 	cout << "\t可用指令集" << endl;
-	cout << "\t\tconfig - 更改相关参数" << endl;
-	cout << "\t\tcls    - 清除历史操作" << endl;
-	cout << "\t\tearn   - 显示历史输入" << endl;
-	cout << "\t\texit   - 退出此程序" << endl;
-	cout << "\t\thelp   - 输出此列表" << endl;
-	cout << "\t\tjump   - 将时间增加 \"n\" 小时" << endl;
-	cout << "\t\tleft   - 登记指定的车牌号离库" << endl;
-	cout << "\t\tmap    - 查看停车场状况" << endl;
-	cout << "\t\tpark   - 新增入库车辆" << endl;
-	cout << "\t\tPMSR   - 显示自述文字" << endl;
-	cout << "\tTODO：" << endl;
-	cout << "\t\tsave   - 保存停车场状况" << endl;
+	cout << "\t\tconfig  - 更改相关参数" << endl;
+	cout << "\t\tcls     - 清除历史操作" << endl;
+	cout << "\t\tearn    - 显示历史输入" << endl;
+	cout << "\t\texit    - 退出此程序" << endl;
+	cout << "\t\thelp    - 输出此列表" << endl;
+	cout << "\t\tjump    - 将时间增加 \"n\" 小时" << endl;
+	cout << "\t\tleft    - 登记指定的车牌号离库" << endl;
+	cout << "\t\tmap     - 查看停车场状况" << endl;
+	cout << "\t\tpark    - 新增入库车辆" << endl;
+	cout << "\t\tPMSR    - 显示自述文字" << endl;
+	cout << "\t\tsave    - 保存停车场状况" << endl;
 	cout << endl;
 	return 0;
 }
 
 //时间函数
 //类型：	int
-//说明：	跳过指定的时间，单位小时
+//说明：	跳过指定的时间 单位小时
 //返回值：	0 无错误
 int Func::Jump() {
 	int i = 0;
@@ -209,6 +206,15 @@ int Func::Leave() {
 	else {
 		spacePointer--;
 	}
+	return 0;
+}
+
+//载入函数
+//类型：	int
+//说明：	重载保存过的记录
+//返回值：	0 无错误
+//			1 未找到文件
+int Func::Load() {
 	return 0;
 }
 
@@ -318,6 +324,26 @@ int Func::Park() {
 	return 0;
 }
 
+//保存函数
+//类型：	int
+//说明：	保存停车场函数
+//返回值：	0 无错误
+//			1 创建文件发生错误
+int Func::Save() {
+	int i = 0;
+	XmlOperate Xml;
+	
+	Xml.CreateXML();
+	for (i = 0; i < spacePointer; i++) {
+		Xml.insertData_Parkinglot(parkingLot.parkingSpace[i].time, parkingLot.parkingSpace[i].parkSerial, parkingLot.parkingSpace[i].isVIP, parkingLot.parkingSpace[i].carSerial, parkingLot.parkingSpace[i].cost);
+	}
+
+	for (i = 0; i < sidewayPointer; i++) {
+		Xml.insertData_Sideway(sideway.parkingSpace[i].carSerial);
+	}
+	return 0;
+}
+
 //解释函数
 //类型：	int
 //说明：	根据输入的命令调用相应的函数
@@ -330,6 +356,7 @@ int Func::Park() {
 //			6 调用 left() 函数
 //			7 调用 map() 函数
 //			8 调用 park() 函数
+//			9 调用 save() 函数
 int Func::Statues() {
 	int i = 0;
 	char command[20] = { "\0" };
@@ -379,6 +406,11 @@ int Func::Statues() {
 	if (strcmp(command, "park") == 0) {
 		Park();
 		return 8;
+	}
+
+	if (strcmp(command, "save") == 0) {
+		Save();
+		return 9;
 	}
 
 	return -1;
