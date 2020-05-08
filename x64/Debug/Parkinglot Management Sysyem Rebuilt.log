@@ -1,1 +1,6 @@
-﻿  Parkinglot Management Sysyem Rebuilt.vcxproj -> C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\x64\Debug\Parkinglot Management Sysyem Rebuilt.exe
+﻿  Function.cpp
+C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\Function.cpp(227,73): warning C4311: “类型强制转换”: 从“const char *”到“int”的指针截断
+C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\Function.cpp(227,73): warning C4302: “类型强制转换”: 从“const char *”到“int”截断
+C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\Function.cpp(230,79): warning C4311: “类型强制转换”: 从“const char *”到“int”的指针截断
+C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\Function.cpp(230,79): warning C4302: “类型强制转换”: 从“const char *”到“int”截断
+  Parkinglot Management Sysyem Rebuilt.vcxproj -> C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\x64\Debug\Parkinglot Management Sysyem Rebuilt.exe

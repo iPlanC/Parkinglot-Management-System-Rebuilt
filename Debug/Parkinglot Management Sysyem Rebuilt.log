@@ -1,2 +1,5 @@
-﻿  xmlOperate.cpp
+﻿  Function.cpp
+C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\Function.cpp(237,34): warning C4476: "sscanf_s": 格式说明符中的类型字段字符“.”未知
+C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\Function.cpp(237,42): warning C4474: sscanf_s: 格式字符串中传递的参数太多
+C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\Function.cpp(237,42): message : 占位符和其参数预计 0 可变参数，但提供的却是 1 参数
   Parkinglot Management Sysyem Rebuilt.vcxproj -> C:\Users\planc\Documents\GitHub\Parkinglot-Management-System-Rebuilt\Debug\Parkinglot Management Sysyem Rebuilt.exe

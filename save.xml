@@ -6,6 +6,4 @@
         <isVIP>0</isVIP>
         <cost>15.00</cost>
     </car>
-    <Sideway carserial="22222"/>
-    <Sideway carserial="33333"/>
 </Parkinglot>

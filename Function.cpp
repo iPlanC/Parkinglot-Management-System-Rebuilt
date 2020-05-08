@@ -213,8 +213,34 @@ int Func::Leave() {
 //类型：	int
 //说明：	重载保存过的记录
 //返回值：	0 无错误
-//			1 未找到文件
 int Func::Load() {
+	XMLDocument doc;
+	doc.LoadFile(".\\save.xml");
+	XMLElement* root = doc.RootElement();
+	XMLElement* car = root->FirstChildElement("car");
+
+	while (car) {
+		XMLElement* carConfig = car->FirstChildElement();
+		const XMLAttribute* savedCarSerial = car->FirstAttribute();
+		strcpy_s(parkingLot.parkingSpace[spacePointer].carSerial, savedCarSerial->Value());
+
+		parkingLot.parkingSpace[spacePointer].time = (int)carConfig->GetText();
+		carConfig = carConfig->NextSiblingElement();
+
+		parkingLot.parkingSpace[spacePointer].parkSerial = (int)carConfig->GetText();
+		carConfig = carConfig->NextSiblingElement();
+
+		parkingLot.parkingSpace[spacePointer].isVIP = (bool)carConfig->GetText();
+		carConfig = carConfig->NextSiblingElement();
+
+		//单独处理double型数据
+		//sscanf_s(carConfig->GetText(), "%.2f", &parkingLot.parkingSpace[spacePointer].cost);
+		parkingLot.parkingSpace[spacePointer].cost = atof(carConfig->GetText());
+
+		car = car->NextSiblingElement();
+		spacePointer++;
+	}
+
 	return 0;
 }
 
@@ -263,6 +289,7 @@ int Func::Login() {
 		}
 	}
 #endif
+	Load();
 	return 0;
 }
 
