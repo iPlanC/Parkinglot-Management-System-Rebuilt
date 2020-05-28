@@ -1,13 +1,13 @@
-//Ô¤±àÒë
+//é¢„ç¼–è¯‘
 #define Debug
 #define realUserName		"PlanC"
 #define realUserPassword	"password"
 #define defaultParkingSpace 1
 
-//ÒıÓÃ
+//å¼•ç”¨
 #include "included.h"
 
-//È«¾Ö±äÁ¿
+//å…¨å±€å˜é‡
 int runningHour = 0;
 int sidewayPointer = 0;
 int spacePointer = 0;
@@ -20,7 +20,7 @@ double VIPDiscount = 0.8;
 using namespace std;
 using namespace tinyxml2;
 
-//½á¹¹Ìå
+//ç»“æ„ä½“
 struct parking_space {
 	int time;
 	int parkSerial;
@@ -45,10 +45,10 @@ struct vip_list {
 	struct vip VIP[100];
 } VIPList;
 
-//ÅäÖÃ±äÁ¿º¯Êı
-//ÀàĞÍ£º	int
-//×÷ÓÃ£º	ÔÊĞíÔËĞĞÊ±¸Ä±ä³ÌĞò²ÎÊı
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
+//é…ç½®å˜é‡å‡½æ•°
+//ç±»å‹ï¼š	int
+//ä½œç”¨ï¼š	å…è®¸è¿è¡Œæ—¶æ”¹å˜ç¨‹åºå‚æ•°
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
 int Func::Config() {
 	int i = 0;
 	int select = 0;
@@ -57,35 +57,35 @@ int Func::Config() {
 
 	while (1) {
 		system("cls");
-		cout << "\t1.¸ü¸ÄÃ¿Ğ¡Ê±Í£³µ·Ñ $costPerHour = " << costPerHour << endl;
-		cout << "\t2.Ìí¼Ó³µÅÆºÅÖÁVIPÁĞ±í $VIPCounter = " << VIPCounter << endl;
-		cout << "\t3.¸ü¸ÄVIPÕÛ¿Û $VIPDiscount = " << VIPDiscount << endl;
-		cout << "\t4.¸ü¸ÄÍ£³µ³¡³µÎ»ÊıÁ¿ $totalSpace = " << totalSpace << endl;
-		cout << "\t0.Í£Ö¹¸ü¸Ä" << endl;
-		cout << "ÊäÈë¶ÔÓ¦µÄĞòºÅÒÔ¸ü¸ÄÏàÓ¦²ÎÊı£º";
+		cout << "\t1.æ›´æ”¹æ¯å°æ—¶åœè½¦è´¹ $costPerHour = " << costPerHour << endl;
+		cout << "\t2.æ·»åŠ è½¦ç‰Œå·è‡³VIPåˆ—è¡¨ $VIPCounter = " << VIPCounter << endl;
+		cout << "\t3.æ›´æ”¹VIPæŠ˜æ‰£ $VIPDiscount = " << VIPDiscount << endl;
+		cout << "\t4.æ›´æ”¹åœè½¦åœºè½¦ä½æ•°é‡ $totalSpace = " << totalSpace << endl;
+		cout << "\t0.åœæ­¢æ›´æ”¹" << endl;
+		cout << "è¾“å…¥å¯¹åº”çš„åºå·ä»¥æ›´æ”¹ç›¸åº”å‚æ•°ï¼š";
 		cin >> select;
 
 		switch (select) {
 		case 1:
-			cout << "ĞÂµÄÃ¿Ğ¡Ê±Í£³µ·Ñ > ";
+			cout << "æ–°çš„æ¯å°æ—¶åœè½¦è´¹ > ";
 			cin >> costPerHour;
-			cout << "ĞŞ¸Ä³É¹¦" << endl;
+			cout << "ä¿®æ”¹æˆåŠŸ" << endl;
 			break;
 		case 2:
-			cout << "ĞÂµÄVIP³µÅÆ > ";
+			cout << "æ–°çš„VIPè½¦ç‰Œ > ";
 			cin >> VIPList.VIP[VIPCounter].carSerial;
 			VIPCounter++;
-			cout << "Ìí¼Ó³É¹¦£¬ÏÂ´Î¹âÁÙÊ±ÉúĞ§¡£" << endl;
+			cout << "æ·»åŠ æˆåŠŸï¼Œä¸‹æ¬¡å…‰ä¸´æ—¶ç”Ÿæ•ˆã€‚" << endl;
 			break;
 		case 3:
-			cout << "ĞÂµÄVIPÕÛ¿Û > ";
+			cout << "æ–°çš„VIPæŠ˜æ‰£ > ";
 			cin >> VIPDiscount;
-			cout << "ĞŞ¸Ä³É¹¦" << endl;
+			cout << "ä¿®æ”¹æˆåŠŸ" << endl;
 			break;
 		case 4:
-			cout << "ĞÂµÄ³µÎ»ÊıÁ¿ > ";
+			cout << "æ–°çš„è½¦ä½æ•°é‡ > ";
 			cin >> totalSpace;
-			cout << "ĞŞ¸Ä³É¹¦";
+			cout << "ä¿®æ”¹æˆåŠŸ";
 			break;
 		case 0:
 			return 0;
@@ -95,46 +95,46 @@ int Func::Config() {
 	return 0;
 }
 
-//ÓªÒµ¶îº¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	ÏÔÊ¾ÓªÒµÊ±³¤ÓëÓªÒµ¶î
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
+//è¥ä¸šé¢å‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	æ˜¾ç¤ºè¥ä¸šæ—¶é•¿ä¸è¥ä¸šé¢
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
 int Func::Earn() {
-	cout << "¹²¼ÆÔÚ " << runningHour / 24 << " Ìì£¬ " << runningHour % 24 << " Ğ¡Ê±£¬ÊÕÈë " << totalEarn << " rmb¡£" << endl;
+	cout << "å…±è®¡åœ¨ " << runningHour / 24 << " å¤©ï¼Œ " << runningHour % 24 << " å°æ—¶ï¼Œæ”¶å…¥ " << totalEarn << " rmbã€‚" << endl;
 	return 0;
 }
 
-//°ïÖúº¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	ÏÔÊ¾³ÌĞòÖ§³ÖµÄËùÓĞÃüÁî
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
+//å¸®åŠ©å‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	æ˜¾ç¤ºç¨‹åºæ”¯æŒçš„æ‰€æœ‰å‘½ä»¤
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
 int Func::Help() {
 	cout << endl;
-	cout << "\t¿ÉÓÃÖ¸Áî¼¯" << endl;
-	cout << "\t\tconfig  - ¸ü¸ÄÏà¹Ø²ÎÊı" << endl;
-	cout << "\t\tcls     - Çå³ıÀúÊ·²Ù×÷" << endl;
-	cout << "\t\tearn    - ÏÔÊ¾ÀúÊ·ÊäÈë" << endl;
-	cout << "\t\texit    - ÍË³ö´Ë³ÌĞò" << endl;
-	cout << "\t\thelp    - Êä³ö´ËÁĞ±í" << endl;
-	cout << "\t\tjump    - ½«Ê±¼äÔö¼Ó \"n\" Ğ¡Ê±" << endl;
-	cout << "\t\tleft    - µÇ¼ÇÖ¸¶¨µÄ³µÅÆºÅÀë¿â" << endl;
-	cout << "\t\tmap     - ²é¿´Í£³µ³¡×´¿ö" << endl;
-	cout << "\t\tpark    - ĞÂÔöÈë¿â³µÁ¾" << endl;
-	cout << "\t\tPMSR    - ÏÔÊ¾×ÔÊöÎÄ×Ö" << endl;
-	cout << "\t\tsave    - ±£´æÍ£³µ³¡×´¿ö" << endl;
+	cout << "\tå¯ç”¨æŒ‡ä»¤é›†" << endl;
+	cout << "\t\tconfig  - æ›´æ”¹ç›¸å…³å‚æ•°" << endl;
+	cout << "\t\tcls     - æ¸…é™¤å†å²æ“ä½œ" << endl;
+	cout << "\t\tearn    - æ˜¾ç¤ºå†å²è¾“å…¥" << endl;
+	cout << "\t\texit    - é€€å‡ºæ­¤ç¨‹åº" << endl;
+	cout << "\t\thelp    - è¾“å‡ºæ­¤åˆ—è¡¨" << endl;
+	cout << "\t\tjump    - å°†æ—¶é—´å¢åŠ  \"n\" å°æ—¶" << endl;
+	cout << "\t\tleft    - ç™»è®°æŒ‡å®šçš„è½¦ç‰Œå·ç¦»åº“" << endl;
+	cout << "\t\tmap     - æŸ¥çœ‹åœè½¦åœºçŠ¶å†µ" << endl;
+	cout << "\t\tpark    - æ–°å¢å…¥åº“è½¦è¾†" << endl;
+	cout << "\t\tPMSR    - æ˜¾ç¤ºè‡ªè¿°æ–‡å­—" << endl;
+	cout << "\t\tsave    - ä¿å­˜åœè½¦åœºçŠ¶å†µ" << endl;
 	cout << endl;
 	return 0;
 }
 
-//Ê±¼äº¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	Ìø¹ıÖ¸¶¨µÄÊ±¼ä µ¥Î»Ğ¡Ê±
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
+//æ—¶é—´å‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	è·³è¿‡æŒ‡å®šçš„æ—¶é—´ å•ä½å°æ—¶
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
 int Func::Jump() {
 	int i = 0;
 	int hour = 0;
-	
-	cout << "ÇëÊäÈëÒªÌø¹ıµÄÊ±³¤£º";
+
+	cout << "è¯·è¾“å…¥è¦è·³è¿‡çš„æ—¶é•¿ï¼š";
 	cin >> hour;
 
 	for (i = 0; i < spacePointer; i++) {
@@ -148,35 +148,35 @@ int Func::Jump() {
 	}
 
 	runningHour = runningHour + hour;
-	cout << "ÒÑÌø¹ı " << hour << " Ğ¡Ê±" << endl;
+	cout << "å·²è·³è¿‡ " << hour << " å°æ—¶" << endl;
 	return 0;
 }
 
-//¼Ç³öº¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	µÇ¼ÇÏàÓ¦µÄ³µÅÆºÅ½É·ÑÀë¿â
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
-//			1 Î´ÕÒµ½
+//è®°å‡ºå‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	ç™»è®°ç›¸åº”çš„è½¦ç‰Œå·ç¼´è´¹ç¦»åº“
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
+//			1 æœªæ‰¾åˆ°
 int Func::Leave() {
 	int i = 0;
 	int j = 0;
 	int flag = 0;
 	char serial[6] = { "\0" };
 
-	cout << "ÇëÊäÈëÀë¿â³µÅÆºÅ£º";
+	cout << "è¯·è¾“å…¥ç¦»åº“è½¦ç‰Œå·ï¼š";
 	cin >> serial;
 
 	for (; i <= spacePointer; i++) {
 		if (strcmp(parkingLot.parkingSpace[i].carSerial, serial) == 0) {
 			flag = 1;
 			totalEarn = totalEarn + parkingLot.parkingSpace[i].cost;
-			cout << "³µÅÆºÅ " << parkingLot.parkingSpace[i].carSerial << " ÒÑÀë¿â£¬ĞèÅ²¶¯ " << spacePointer - i - 1 << " Á¾³µ" << endl;
+			cout << "è½¦ç‰Œå· " << parkingLot.parkingSpace[i].carSerial << " å·²ç¦»åº“ï¼Œéœ€æŒªåŠ¨ " << spacePointer - i - 1 << " è¾†è½¦" << endl;
 			break;
 		}
 	}
 
 	if (flag != 1) {
-		cout << "Î´ÕÒµ½³µÅÆºÅ£¬ÇëºË¶ÔºóÖØÊÔ¡£" << endl;
+		cout << "æœªæ‰¾åˆ°è½¦ç‰Œå·ï¼Œè¯·æ ¸å¯¹åé‡è¯•ã€‚" << endl;
 		return 1;
 	}
 
@@ -209,10 +209,10 @@ int Func::Leave() {
 	return 0;
 }
 
-//ÔØÈëº¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	ÖØÔØ±£´æ¹ıµÄ¼ÇÂ¼
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
+//è½½å…¥å‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	é‡è½½ä¿å­˜è¿‡çš„è®°å½•
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
 int Func::Load() {
 	XMLDocument doc;
 	doc.LoadFile(".\\save.xml");
@@ -233,7 +233,7 @@ int Func::Load() {
 		parkingLot.parkingSpace[spacePointer].isVIP = (bool)carConfig->GetText();
 		carConfig = carConfig->NextSiblingElement();
 
-		//µ¥¶À´¦ÀídoubleĞÍÊı¾İ
+		//å•ç‹¬å¤„ç†doubleå‹æ•°æ®
 		//sscanf_s(carConfig->GetText(), "%.2f", &parkingLot.parkingSpace[spacePointer].cost);
 		parkingLot.parkingSpace[spacePointer].cost = atof(carConfig->GetText());
 
@@ -244,12 +244,12 @@ int Func::Load() {
 	return 0;
 }
 
-//µÇÂ¼º¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	ÑéÖ¤µÇÂ¼¹ı³Ì
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
-//			1 ÓÃ»§ÃûÕÒ²»µ½
-//			2 ÃÜÂë´íÎó
+//ç™»å½•å‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	éªŒè¯ç™»å½•è¿‡ç¨‹
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
+//			1 ç”¨æˆ·åæ‰¾ä¸åˆ°
+//			2 å¯†ç é”™è¯¯
 int Func::Login() {
 	int i = 0;
 	int retryTimes = 3;
@@ -258,14 +258,14 @@ int Func::Login() {
 
 #ifdef Release
 	while (retryTimes--) {
-		cout << "ÇëÊäÈëÓÃ»§Ãû£º";
+		cout << "è¯·è¾“å…¥ç”¨æˆ·åï¼š";
 		cin >> inputUserName;
 		if (strcmp(inputUserName, realUserName)) {
 			if (retryTimes == 0) {
-				cout << endl << "Èı´Î´íÎó£¬³ÌĞòÍË³ö¡£" << endl;
+				cout << endl << "ä¸‰æ¬¡é”™è¯¯ï¼Œç¨‹åºé€€å‡ºã€‚" << endl;
 				return 1;
 			}
-			cout << "ÊäÈë´íÎó£¬Çë¼ì²éºóÖØÊÔ¡£" << endl;
+			cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·æ£€æŸ¥åé‡è¯•ã€‚" << endl;
 			continue;
 		}
 		else {
@@ -274,14 +274,14 @@ int Func::Login() {
 	}
 
 	while (retryTimes--) {
-		cout << "ÇëÊäÈëÃÜÂë£º";
+		cout << "è¯·è¾“å…¥å¯†ç ï¼š";
 		cin >> inputUserPassword;
 		if (strcmp(inputUserPassword, realUserPassword)) {
 			if (retryTimes == 0) {
-				cout << endl << "Èı´Î´íÎó£¬³ÌĞòÍË³ö¡£" << endl;
+				cout << endl << "ä¸‰æ¬¡é”™è¯¯ï¼Œç¨‹åºé€€å‡ºã€‚" << endl;
 				return 2;
 			}
-			cout << "ÊäÈë´íÎó£¬Çë¼ì²éºóÖØÊÔ¡£" << endl;
+			cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·æ£€æŸ¥åé‡è¯•ã€‚" << endl;
 			continue;
 		}
 		else {
@@ -293,16 +293,16 @@ int Func::Login() {
 	return 0;
 }
 
-//ÏÔÊ¾×´Ì¬º¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	ÏÔÊ¾Í£³µ³¡×´¿öº¯Êı
-//·µ»ØÖµ;	0 ÎŞ´íÎó
+//æ˜¾ç¤ºçŠ¶æ€å‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	æ˜¾ç¤ºåœè½¦åœºçŠ¶å†µå‡½æ•°
+//è¿”å›å€¼;	0 æ— é”™è¯¯
 int Func::Map() {
 	int i = 0;
 
-	cout << "¹²Í£ÁË " << spacePointer << " Á¾³µ" << endl;
-	cout << "³µ Î»\t³µ ÅÆ\tÊ± ¼ä\t½É ·Ñ\t¹ó ±ö" << endl;
-	
+	cout << "å…±åœäº† " << spacePointer << " è¾†è½¦" << endl;
+	cout << "è½¦ ä½\tè½¦ ç‰Œ\tæ—¶ é—´\tç¼´ è´¹\tè´µ å®¾" << endl;
+
 	for (i = 0; i < spacePointer; i++) {
 		cout << parkingLot.parkingSpace[i].parkSerial << "\t" << parkingLot.parkingSpace[i].carSerial << "\t" << parkingLot.parkingSpace[i].time << "\t" << parkingLot.parkingSpace[i].cost << "\t";
 		if (parkingLot.parkingSpace[i].isVIP) {
@@ -313,21 +313,21 @@ int Func::Map() {
 		}
 	}
 
-	cout << endl << "±ãµÀÖĞ¹²ÓĞ " << sidewayPointer << " Á¾³µÔÚµÈ´ı¡£" << endl;
+	cout << endl << "ä¾¿é“ä¸­å…±æœ‰ " << sidewayPointer << " è¾†è½¦åœ¨ç­‰å¾…ã€‚" << endl;
 	return 0;
 }
 
-//Èë¿âº¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	ĞÂÔöÈë¿â³µÁ¾
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
+//å…¥åº“å‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	æ–°å¢å…¥åº“è½¦è¾†
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
 int Func::Park() {
 	int i = 0;
 	char serial[6] = { "\0" };
 
-	cout << "ÇëÊäÈëÈë¿â³µÅÆºÅ£º";
+	cout << "è¯·è¾“å…¥å…¥åº“è½¦ç‰Œå·ï¼š";
 	cin >> serial;
-	
+
 	if (spacePointer < totalSpace) {
 		strcpy_s(parkingLot.parkingSpace[spacePointer].carSerial, serial);
 		parkingLot.parkingSpace[spacePointer].time = 0;
@@ -340,26 +340,26 @@ int Func::Park() {
 			}
 		}
 		parkingLot.parkingSpace[spacePointer].parkSerial = spacePointer + 1;
-		cout << "³µÅÆºÅ " << serial << " ÒÑÈë¿â" << endl;
+		cout << "è½¦ç‰Œå· " << serial << " å·²å…¥åº“" << endl;
 		spacePointer++;
 	}
 	else {
 		strcpy_s(sideway.parkingSpace[sidewayPointer].carSerial, serial);
-		cout << "³µ¿âÒÑÂú£¬³µÅÆºÅ " << sideway.parkingSpace[sidewayPointer].carSerial << " ÒÑÍ£·ÅÖÁ±ãµÀ£¬Ç°·½¹²ÓĞ " << sidewayPointer << " Á¾³µ¡£" << endl;
+		cout << "è½¦åº“å·²æ»¡ï¼Œè½¦ç‰Œå· " << sideway.parkingSpace[sidewayPointer].carSerial << " å·²åœæ”¾è‡³ä¾¿é“ï¼Œå‰æ–¹å…±æœ‰ " << sidewayPointer << " è¾†è½¦ã€‚" << endl;
 		sidewayPointer++;
 	}
 	return 0;
 }
 
-//±£´æº¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	±£´æÍ£³µ³¡º¯Êı
-//·µ»ØÖµ£º	0 ÎŞ´íÎó
-//			1 ´´½¨ÎÄ¼ş·¢Éú´íÎó
+//ä¿å­˜å‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	ä¿å­˜åœè½¦åœºå‡½æ•°
+//è¿”å›å€¼ï¼š	0 æ— é”™è¯¯
+//			1 åˆ›å»ºæ–‡ä»¶å‘ç”Ÿé”™è¯¯
 int Func::Save() {
 	int i = 0;
 	XmlOperate Xml;
-	
+
 	Xml.CreateXML();
 	for (i = 0; i < spacePointer; i++) {
 		Xml.insertData_Parkinglot(parkingLot.parkingSpace[i].time, parkingLot.parkingSpace[i].parkSerial, parkingLot.parkingSpace[i].isVIP, parkingLot.parkingSpace[i].carSerial, parkingLot.parkingSpace[i].cost);
@@ -371,19 +371,19 @@ int Func::Save() {
 	return 0;
 }
 
-//½âÊÍº¯Êı
-//ÀàĞÍ£º	int
-//ËµÃ÷£º	¸ù¾İÊäÈëµÄÃüÁîµ÷ÓÃÏàÓ¦µÄº¯Êı
-//·µ»ØÖµ£º	0 ÍË³ö
-//			1 µ÷ÓÃ config() º¯Êı
-//			2 µ÷ÓÃ system("cls") º¯Êı
-//			3 µ÷ÓÃ earn() º¯Êı
-//			4 µ÷ÓÃ help() º¯Êı
-//			5 µ÷ÓÃ jump() º¯Êı
-//			6 µ÷ÓÃ left() º¯Êı
-//			7 µ÷ÓÃ map() º¯Êı
-//			8 µ÷ÓÃ park() º¯Êı
-//			9 µ÷ÓÃ save() º¯Êı
+//è§£é‡Šå‡½æ•°
+//ç±»å‹ï¼š	int
+//è¯´æ˜ï¼š	æ ¹æ®è¾“å…¥çš„å‘½ä»¤è°ƒç”¨ç›¸åº”çš„å‡½æ•°
+//è¿”å›å€¼ï¼š	0 é€€å‡º
+//			1 è°ƒç”¨ config() å‡½æ•°
+//			2 è°ƒç”¨ system("cls") å‡½æ•°
+//			3 è°ƒç”¨ earn() å‡½æ•°
+//			4 è°ƒç”¨ help() å‡½æ•°
+//			5 è°ƒç”¨ jump() å‡½æ•°
+//			6 è°ƒç”¨ left() å‡½æ•°
+//			7 è°ƒç”¨ map() å‡½æ•°
+//			8 è°ƒç”¨ park() å‡½æ•°
+//			9 è°ƒç”¨ save() å‡½æ•°
 int Func::Statues() {
 	int i = 0;
 	char command[20] = { "\0" };
